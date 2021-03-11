@@ -1,0 +1,999 @@
+{
+  "components": [
+    {
+      "allowDataLink": false,
+      "axis0": [
+        {
+          "flex": 1,
+          "name": "#{Invoice Number}",
+          "text": "DISTINCT \"BKPF\".\"BELNR\"",
+          "translatedName": "Invoice Number",
+          "type": "dimension",
+          "valueFormat": "",
+          "width": 132
+        },
+        {
+          "flex": 0.9242,
+          "name": "#{Company Code}",
+          "text": "\"BKPF\".\"BUKRS\" || '-' ||\"BKPF\".\"BUKRS_TEXT\"",
+          "type": "dimension",
+          "valueFormat": "",
+          "width": 122
+        },
+        {
+          "flex": 2.1212,
+          "name": "#{Vendor}",
+          "text": "\"LFA1\".\"LIFNR\" ||'-'|| \"LFA1\".\"NAME1\"",
+          "translatedName": "LIFNR",
+          "type": "dimension",
+          "valueFormat": "",
+          "width": 280
+        },
+        {
+          "flex": 1.1212,
+          "name": "#{Cash Discount %}",
+          "ratioFormula": {},
+          "seriesColor": "",
+          "seriesColorMapping": "",
+          "sorting": "DESC",
+          "sortingIndex": 0,
+          "text": "\"BSEG\".\"ZBD1P\"",
+          "textColor": "",
+          "textColorMapping": "",
+          "translatedName": "Cash Discount",
+          "type": "dimension",
+          "units": "%",
+          "valueFormat": "",
+          "width": 148
+        },
+        {
+          "flex": 1.3561,
+          "name": "#{Cash Discount Due Date}",
+          "text": "ADD_DAYS (ROUND_DAY(\"BSEG\".\"ZFBDT\"), <%=CD1%> )",
+          "translatedName": "Cash Discount Due Date",
+          "type": "dimension",
+          "valueFormat": "%Y-%m-%d",
+          "width": 179
+        }
+      ],
+      "axis0Config": {
+        "autoTickCount": true,
+        "axisLabelStyle": {
+          "backgroundColor": "",
+          "borderColor": "",
+          "currentFontSize": {
+            "name": "x-small 11px",
+            "value": 11
+          },
+          "fontColor": "",
+          "fontSize": 11
+        },
+        "axisLineStyle": {
+          "lineOpacity": 1
+        },
+        "axisTitleStyle": {
+          "backgroundColor": "",
+          "borderColor": "",
+          "currentFontSize": {
+            "name": "small 13px",
+            "value": 13
+          },
+          "fontColor": "",
+          "fontSize": 13
+        },
+        "gapWidth": 0.45,
+        "gridlineStyle": {
+          "lineOpacity": 1
+        },
+        "showAxis": true,
+        "showAxisLabels": true,
+        "showTickLines": true
+      },
+      "axis1": [],
+      "axis1Config": {
+        "autoTickCount": true,
+        "axisLabelStyle": {
+          "backgroundColor": "",
+          "borderColor": "",
+          "currentFontSize": {
+            "name": "x-small 11px",
+            "value": 11
+          },
+          "fontColor": "",
+          "fontSize": 11
+        },
+        "axisLineStyle": {
+          "lineOpacity": 1
+        },
+        "axisTitleStyle": {
+          "backgroundColor": "",
+          "borderColor": "",
+          "currentFontSize": {
+            "name": "small 13px",
+            "value": 13
+          },
+          "fontColor": "",
+          "fontSize": 13
+        },
+        "boundsMode": "AUTO",
+        "gridlineStyle": {
+          "lineColor": "#e4e4e4",
+          "lineOpacity": 1,
+          "lineWidth": 1
+        },
+        "showAxis": true,
+        "showAxisLabels": true,
+        "showGridlines": true,
+        "showTickLines": true
+      },
+      "axis2": [
+        {
+          "dataLabelStyle": {},
+          "dataLabelsPosition": "custom",
+          "fillStyle": {
+            "opacity": 1
+          },
+          "flex": 0.697,
+          "ignoreSeriesPalettes": true,
+          "name": "#{Today}",
+          "seriesColor": "",
+          "seriesColorMapping": "",
+          "seriesPalette": "",
+          "showDataLabels": false,
+          "text": "KPI(\"Today_form\")",
+          "textColor": "",
+          "textColorMapping": "",
+          "translatedName": "Today",
+          "valueFormat": "%Y-%m-%d",
+          "width": 92
+        },
+        {
+          "dataLabelStyle": {},
+          "dataLabelsPosition": "custom",
+          "fillStyle": {
+            "opacity": 1
+          },
+          "flex": 1.0909,
+          "ignoreSeriesPalettes": true,
+          "name": "#{Days left for 1st CD}",
+          "ratioFormula": {},
+          "seriesColor": "transparent",
+          "seriesColorMapping": "d7931b8f-f809-4e96-9f54-afaa756f0866",
+          "seriesPalette": "",
+          "showDataLabels": false,
+          "text": "DAYS_BETWEEN (  KPI(\"Today_form\"),KPI(\"CD1\") )",
+          "textColor": "",
+          "textColorMapping": "94a3c4d8-4b2f-4eb1-9539-f37999daad7f",
+          "translatedName": "Days left for 1st CD",
+          "valueFormat": "",
+          "width": 144
+        },
+        {
+          "dataLabelStyle": {},
+          "dataLabelsPosition": "custom",
+          "fillStyle": {
+            "opacity": 1
+          },
+          "flex": 1.0076,
+          "function": null,
+          "ignoreSeriesPalettes": true,
+          "name": "#{Total Invoice Value}",
+          "seriesColor": "",
+          "seriesColorMapping": "",
+          "seriesPalette": "",
+          "showDataLabels": false,
+          "text": "PU_SUM (\"BKPF\",\"BSEG\".\"WRBTR_CONVERTED\")",
+          "textColor": "",
+          "textColorMapping": "",
+          "translatedName": "Total Invoice Value",
+          "units": " \u20ac",
+          "valueFormat": ".3s",
+          "width": 133
+        },
+        {
+          "dataLabelStyle": {},
+          "dataLabelsPosition": "custom",
+          "fillStyle": {
+            "opacity": 1
+          },
+          "flex": 1.0455,
+          "function": null,
+          "ignoreSeriesPalettes": true,
+          "name": "#{Eligible for Discount}",
+          "seriesColor": "",
+          "seriesColorMapping": "",
+          "seriesPalette": "",
+          "showDataLabels": false,
+          "text": "PU_SUM (\"BKPF\",\"BSEG\".\"SKFBT_CONVERTED\")",
+          "textColor": "",
+          "textColorMapping": "",
+          "translatedName": "Eligible for Discount",
+          "units": " \u20ac",
+          "valueFormat": "",
+          "width": 138
+        },
+        {
+          "dataLabelStyle": {},
+          "dataLabelsPosition": "custom",
+          "fillStyle": {
+            "opacity": 1
+          },
+          "flex": 1.2273,
+          "ignoreSeriesPalettes": true,
+          "name": "#{Eligible Cash Discount}",
+          "seriesColor": "",
+          "seriesColorMapping": "",
+          "seriesPalette": "",
+          "showDataLabels": false,
+          "text": "(\"BSEG\".\"ZBD1P\" )* (PU_SUM (\"BKPF\",\"BSEG\".\"SKFBT_CONVERTED\"))/100",
+          "textColor": "",
+          "textColorMapping": "",
+          "translatedName": "Eligible Cash Discount",
+          "units": " \u20ac",
+          "valueFormat": ",.1f",
+          "width": 162
+        }
+      ],
+      "axis2Config": {
+        "autoTickCount": true,
+        "axisLabelStyle": {
+          "backgroundColor": "",
+          "borderColor": "",
+          "fontColor": ""
+        },
+        "axisLineStyle": {},
+        "axisTitleStyle": {
+          "backgroundColor": "",
+          "borderColor": "",
+          "currentFontSize": {
+            "name": "small 13px",
+            "value": 13
+          },
+          "fontColor": "",
+          "fontSize": 13
+        },
+        "boundsMode": "AUTO",
+        "gridlineStyle": {},
+        "showAxis": true,
+        "showAxisLabels": true,
+        "showTickLines": true
+      },
+      "backgroundColor": "#ffffff",
+      "border": false,
+      "chartType": "table",
+      "clickToFilter": true,
+      "componentFilter": "FILTER KPI (\"Date Diff Formula\") < 10 AND \"BKPF\".\"BELNR\" IS NOT NULL AND \"BSEG\".\"ZBD1P\" > 0",
+      "contextMenuMethods": {
+        "componentFilter": true,
+        "copy": true,
+        "deletable": true,
+        "export": true,
+        "fullscreen": true,
+        "layers": true,
+        "settings": true
+      },
+      "dataLabelsPositions": [
+        "top",
+        "middle",
+        "bottom",
+        "custom"
+      ],
+      "diagramBackground": false,
+      "diagramBackgroundStyle": {
+        "fillColor": "",
+        "opacity": 1
+      },
+      "diagramBorder": true,
+      "diagramBorderStyle": {
+        "color": "#6FA7D1",
+        "lineColor": "#e9e9e9",
+        "lineOpacity": 1,
+        "lineWidth": 1,
+        "opacityInDec": 100
+      },
+      "feedbackMode": false,
+      "filteringSelf": true,
+      "hasBackground": true,
+      "hasHoverbuttons": false,
+      "height": 40,
+      "hoverButtonFixed": false,
+      "hoverButtonPosition": "LEFT",
+      "id": "dce2297a-8eaa-4bbf-bb4d-d24e93029ccf",
+      "legendFontStyle": {
+        "backgroundColor": "",
+        "borderColor": "",
+        "currentFontSize": {
+          "name": "x-small 11px",
+          "value": 11
+        },
+        "fontColor": "",
+        "fontSize": 11
+      },
+      "legendOverlay": false,
+      "legendPosition": "bc",
+      "legendShow": true,
+      "limitMode": "NO_LIMIT",
+      "limitNumber": 100,
+      "maximized": false,
+      "selection": [],
+      "showHeader": true,
+      "showOthers": false,
+      "showTitle": true,
+      "textStyle": {
+        "alignment": "center",
+        "currentFontSize": {
+          "name": "medium 14px",
+          "value": 14
+        },
+        "fontSize": 14
+      },
+      "title": "#{CASH DISCOUNT ANALYSIS}",
+      "titleStyle": {
+        "alignment": "center",
+        "backgroundColor": "#14A9D5",
+        "borderColor": "",
+        "currentFontSize": {
+          "name": "x-large 17px",
+          "value": 17
+        },
+        "fontColor": "#ffffff",
+        "fontSize": 17
+      },
+      "toolBorder": false,
+      "tooltips": true,
+      "type": "pql-table",
+      "vertical": false,
+      "width": 70,
+      "x": 30,
+      "y": 10,
+      "zIndex": 1
+    },
+    {
+      "activityColumnRef": "\"_CEL_AP_ACTIVITIES\".\"ACTIVITY_EN\"",
+      "activityConfigurations": [
+        {
+          "color": "#14a9d5",
+          "hidden": false,
+          "name": "Book Invoice"
+        },
+        {
+          "color": "#14a9d5",
+          "hidden": false,
+          "name": "Cancel Invoice Receipt"
+        },
+        {
+          "color": "#14a9d5",
+          "hidden": false,
+          "name": "Change Baseline Date"
+        },
+        {
+          "color": "#14a9d5",
+          "hidden": false,
+          "name": "Change Payment Term"
+        },
+        {
+          "color": "#14a9d5",
+          "hidden": false,
+          "name": "Clear Invoice"
+        },
+        {
+          "color": "#14a9d5",
+          "hidden": false,
+          "name": "Due Date passed"
+        },
+        {
+          "color": "#14a9d5",
+          "hidden": false,
+          "name": "Enter in SAP"
+        },
+        {
+          "color": "#14a9d5",
+          "hidden": false,
+          "name": "Remove Payment Block"
+        },
+        {
+          "color": "#14a9d5",
+          "hidden": false,
+          "name": "Scan Invoice"
+        },
+        {
+          "color": "#14a9d5",
+          "hidden": false,
+          "name": "Set Dunning Block"
+        },
+        {
+          "color": "#14a9d5",
+          "hidden": false,
+          "name": "Set Payment Block"
+        },
+        {
+          "color": "#14a9d5",
+          "hidden": false,
+          "name": "Vendor Creates Invoice"
+        }
+      ],
+      "allowDataLink": false,
+      "backgroundColor": "#ffffff",
+      "border": false,
+      "clickToFilter": true,
+      "componentFilter": "",
+      "contextMenuMethods": {
+        "componentFilter": true,
+        "copy": true,
+        "deletable": true,
+        "export": true,
+        "fullscreen": true,
+        "layers": true,
+        "settings": true
+      },
+      "diagramBackground": false,
+      "diagramBackgroundStyle": {
+        "fillColor": "",
+        "opacity": 1
+      },
+      "diagramBorder": true,
+      "diagramBorderStyle": {
+        "color": "#6FA7D1",
+        "lineColor": "#e9e9e9",
+        "lineOpacity": 1,
+        "lineWidth": 1,
+        "opacityInDec": 100
+      },
+      "edgeSliderState": 0,
+      "feedbackMode": false,
+      "filteringSelf": true,
+      "fullDotLayout": true,
+      "groupsConfigurations": [],
+      "hasBackground": true,
+      "hasHoverbuttons": false,
+      "height": 50,
+      "hiddenActivities": {},
+      "hoverButtonFixed": false,
+      "hoverButtonPosition": "RIGHT",
+      "id": "942d0fc9-3f04-45dc-bb10-73a7714cfc63",
+      "kpiView": {
+        "connectionKpi": {
+          "colorEnd": "#1190b6",
+          "colorStart": "#40c6ed",
+          "id": "FREQUENCY",
+          "name": "frequency",
+          "text": "",
+          "units": "",
+          "valueFormat": ",f"
+        },
+        "connectionKpis": [
+          {
+            "colorEnd": "#1190b6",
+            "colorStart": "#40c6ed",
+            "id": "FREQUENCY",
+            "name": "frequency",
+            "text": "",
+            "units": "",
+            "valueFormat": ",f"
+          }
+        ],
+        "icon": "icons/icon-frequency.svg",
+        "id": "FREQUENCY",
+        "inlineKpi": "caseCount",
+        "title": "frequency"
+      },
+      "maximized": false,
+      "nodeSliderState": 0,
+      "selection": [],
+      "showHeader": true,
+      "title": "",
+      "titleStyle": {
+        "backgroundColor": "",
+        "borderColor": "",
+        "currentFontSize": {
+          "name": "x-large 17px",
+          "value": 17
+        },
+        "fontColor": "",
+        "fontSize": 17
+      },
+      "toolBorder": false,
+      "type": "simple_process",
+      "version": 2,
+      "vertical": false,
+      "width": 30,
+      "x": 0,
+      "y": 0,
+      "zIndex": 1
+    },
+    {
+      "allowDataLink": false,
+      "backgroundColor": "#ffffff",
+      "border": false,
+      "clickToFilter": true,
+      "componentFilter": "FILTER KPI (\"Date Diff Formula\") < 10 AND KPI (\"Date Diff Formula\") > 0",
+      "contextMenuMethods": {
+        "componentFilter": true,
+        "copy": true,
+        "deletable": true,
+        "export": true,
+        "fullscreen": true,
+        "layers": true,
+        "settings": true
+      },
+      "diagramBackground": false,
+      "diagramBackgroundStyle": {
+        "fillColor": "",
+        "opacity": 1
+      },
+      "diagramBorder": true,
+      "diagramBorderStyle": {
+        "color": "#6FA7D1",
+        "lineColor": "#e9e9e9",
+        "lineOpacity": 1,
+        "lineWidth": 1,
+        "opacityInDec": 100
+      },
+      "feedbackMode": false,
+      "filteredThresholds": false,
+      "filteringSelf": true,
+      "formula": {
+        "name": "Single KPI",
+        "text": "COUNT (KPI(\"Date Diff Formula\"))",
+        "translatedName": "Single KPI",
+        "valueFormat": ""
+      },
+      "hasBackground": true,
+      "hasHoverbuttons": false,
+      "height": 10,
+      "hoverButtonFixed": false,
+      "hoverButtonPosition": "RIGHT",
+      "id": "92cce802-48c7-4530-9621-138a82d239c9",
+      "initThresholdsCount": 1,
+      "kpiValue": 14,
+      "maximized": false,
+      "minHeight": 2,
+      "minWidth": 2,
+      "segmentsInput": [
+        {
+          "color": "#1f77b4",
+          "formula": {
+            "text": "1500"
+          },
+          "value": 1500
+        },
+        {
+          "color": "#1f77b4",
+          "formula": {
+            "text": "1500"
+          },
+          "value": 1500
+        }
+      ],
+      "selection": [],
+      "settings": {
+        "fixedTextSize": false,
+        "initThresholdsCount": 1,
+        "singleColor": "#1f77b4",
+        "singleColorEnabled": true,
+        "subtitlePosition": "left",
+        "viewType": "number"
+      },
+      "showHeader": true,
+      "thresholds": [
+        {
+          "color": "#1f77b4",
+          "formula": {
+            "text": "1500"
+          },
+          "value": 1500
+        }
+      ],
+      "title": "#Invoices nearing Cash Discount Date",
+      "titleStyle": {
+        "alignment": "center",
+        "backgroundColor": "#14A9D5",
+        "bold": false,
+        "borderColor": "",
+        "currentFontSize": {
+          "name": "x-large 17px",
+          "value": 17
+        },
+        "fontColor": "#ffffff",
+        "fontSize": 17
+      },
+      "toolBorder": false,
+      "type": "single-kpi",
+      "version": 1,
+      "vertical": false,
+      "viewType": "number",
+      "width": 18,
+      "x": 51,
+      "y": 0,
+      "zIndex": 1
+    },
+    {
+      "allowDataLink": false,
+      "backgroundColor": "#ffffff",
+      "border": false,
+      "clickToFilter": true,
+      "componentFilter": "FILTER KPI (\"Date Diff Formula\") < 10 AND KPI (\"Date Diff Formula\") > 0",
+      "contextMenuMethods": {
+        "componentFilter": true,
+        "copy": true,
+        "deletable": true,
+        "export": true,
+        "fullscreen": true,
+        "layers": true,
+        "settings": true
+      },
+      "diagramBackground": false,
+      "diagramBackgroundStyle": {
+        "fillColor": "",
+        "opacity": 1
+      },
+      "diagramBorder": true,
+      "diagramBorderStyle": {
+        "color": "#6FA7D1",
+        "lineColor": "#e9e9e9",
+        "lineOpacity": 1,
+        "lineWidth": 1,
+        "opacityInDec": 100
+      },
+      "feedbackMode": false,
+      "filteredThresholds": false,
+      "filteringSelf": true,
+      "formula": {
+        "name": "Single KPI",
+        "text": "SUM ((\"BSEG\".\"ZBD1P\" )* (PU_SUM (\"BKPF\",\"BSEG\".\"SKFBT_CONVERTED\"))/100)",
+        "translatedName": "Single KPI",
+        "units": "\u20ac",
+        "valueFormat": ",.2f"
+      },
+      "hasBackground": true,
+      "hasHoverbuttons": false,
+      "height": 10,
+      "hoverButtonFixed": false,
+      "hoverButtonPosition": "RIGHT",
+      "id": "ef6f9033-dca7-4b48-8533-f535e117c3d1",
+      "initThresholdsCount": 1,
+      "kpiValue": 189.6286,
+      "maximized": false,
+      "minHeight": 2,
+      "minWidth": 2,
+      "segmentsInput": [
+        {
+          "color": "#1f77b4",
+          "formula": {
+            "text": "1500"
+          },
+          "value": 1500
+        },
+        {
+          "color": "#1f77b4",
+          "formula": {
+            "text": "1500"
+          },
+          "value": 1500
+        }
+      ],
+      "selection": [],
+      "settings": {
+        "fixedTextSize": false,
+        "initThresholdsCount": 1,
+        "singleColor": "#1f77b4",
+        "singleColorEnabled": true,
+        "subtitlePosition": "left",
+        "viewType": "number"
+      },
+      "showHeader": true,
+      "thresholds": [
+        {
+          "color": "#1f77b4",
+          "formula": {
+            "text": "1500"
+          },
+          "value": 1500
+        }
+      ],
+      "title": "Redeemable Cash Discount",
+      "titleStyle": {
+        "alignment": "center",
+        "backgroundColor": "#14A9D5",
+        "borderColor": "",
+        "currentFontSize": {
+          "name": "x-large 17px",
+          "value": 17
+        },
+        "fontColor": "#ffffff",
+        "fontSize": 17
+      },
+      "toolBorder": false,
+      "type": "single-kpi",
+      "version": 1,
+      "vertical": false,
+      "viewType": "number",
+      "width": 14,
+      "x": 37,
+      "y": 0,
+      "zIndex": 2
+    },
+    {
+      "allowDataLink": false,
+      "backgroundColor": "#ffffff",
+      "border": false,
+      "clickToFilter": true,
+      "componentFilter": "FILTER KPI (\"Date Diff Formula\") < 0",
+      "contextMenuMethods": {
+        "componentFilter": true,
+        "copy": true,
+        "deletable": true,
+        "export": true,
+        "fullscreen": true,
+        "layers": true,
+        "settings": true
+      },
+      "diagramBackground": false,
+      "diagramBackgroundStyle": {
+        "fillColor": "",
+        "opacity": 1
+      },
+      "diagramBorder": true,
+      "diagramBorderStyle": {
+        "color": "#6FA7D1",
+        "lineColor": "#e9e9e9",
+        "lineOpacity": 1,
+        "lineWidth": 1,
+        "opacityInDec": 100
+      },
+      "feedbackMode": false,
+      "filteredThresholds": false,
+      "filteringSelf": true,
+      "formula": {
+        "name": "Single KPI",
+        "text": "COUNT (KPI(\"Date Diff Formula\"))",
+        "translatedName": "Single KPI",
+        "valueFormat": ""
+      },
+      "hasBackground": true,
+      "hasHoverbuttons": false,
+      "height": 10,
+      "hoverButtonFixed": false,
+      "hoverButtonPosition": "RIGHT",
+      "id": "ba91e347-0c74-418c-b5c3-3b3379408d17",
+      "initThresholdsCount": 1,
+      "kpiValue": 47,
+      "maximized": false,
+      "minHeight": 2,
+      "minWidth": 2,
+      "segmentsInput": [
+        {
+          "color": "#1f77b4",
+          "formula": {
+            "text": "1500"
+          },
+          "value": 1500
+        },
+        {
+          "color": "#1f77b4",
+          "formula": {
+            "text": "1500"
+          },
+          "value": 1500
+        }
+      ],
+      "selection": [],
+      "settings": {
+        "fixedTextSize": false,
+        "initThresholdsCount": 1,
+        "singleColor": "#1f77b4",
+        "singleColorEnabled": true,
+        "subtitlePosition": "left",
+        "viewType": "number"
+      },
+      "showHeader": true,
+      "thresholds": [
+        {
+          "color": "#1f77b4",
+          "formula": {
+            "text": "1500"
+          },
+          "value": 1500
+        }
+      ],
+      "title": "#Invoices Missed Cash Discount Date",
+      "titleStyle": {
+        "alignment": "center",
+        "backgroundColor": "#14A9D5",
+        "borderColor": "",
+        "currentFontSize": {
+          "name": "x-large 17px",
+          "value": 17
+        },
+        "fontColor": "#ffffff",
+        "fontSize": 17
+      },
+      "toolBorder": false,
+      "type": "single-kpi",
+      "version": 1,
+      "vertical": false,
+      "viewType": "number",
+      "width": 18,
+      "x": 69,
+      "y": 0,
+      "zIndex": 2
+    },
+    {
+      "allowDataLink": false,
+      "backgroundColor": "#ffffff",
+      "border": false,
+      "clickToFilter": true,
+      "componentFilter": "FILTER KPI (\"Date Diff Formula\") > 0",
+      "contextMenuMethods": {
+        "componentFilter": true,
+        "copy": true,
+        "deletable": true,
+        "export": true,
+        "fullscreen": true,
+        "layers": true,
+        "settings": true
+      },
+      "diagramBackground": false,
+      "diagramBackgroundStyle": {
+        "fillColor": "",
+        "opacity": 1
+      },
+      "diagramBorder": true,
+      "diagramBorderStyle": {
+        "color": "#6FA7D1",
+        "lineColor": "#e9e9e9",
+        "lineOpacity": 1,
+        "lineWidth": 1,
+        "opacityInDec": 100
+      },
+      "feedbackMode": false,
+      "filteredThresholds": false,
+      "filteringSelf": true,
+      "formula": {
+        "name": "Single KPI",
+        "text": "SUM ((\"BSEG\".\"ZBD1P\" )* (PU_SUM (\"BKPF\",\"BSEG\".\"SKFBT_CONVERTED\"))/100)",
+        "translatedName": "Single KPI",
+        "units": "\u20ac",
+        "valueFormat": ".3s"
+      },
+      "hasBackground": true,
+      "hasHoverbuttons": false,
+      "height": 10,
+      "hoverButtonFixed": false,
+      "hoverButtonPosition": "LEFT",
+      "id": "807372ab-c105-42b0-a54f-beb1add140a9",
+      "initThresholdsCount": 1,
+      "kpiValue": 5935.519800000001,
+      "maximized": false,
+      "minHeight": 2,
+      "minWidth": 2,
+      "segmentsInput": [
+        {
+          "color": "#1f77b4",
+          "formula": {
+            "text": "1500"
+          },
+          "value": 1500
+        },
+        {
+          "color": "#1f77b4",
+          "formula": {
+            "text": "1500"
+          },
+          "value": 1500
+        }
+      ],
+      "selection": [],
+      "settings": {
+        "fixedTextSize": false,
+        "initThresholdsCount": 1,
+        "singleColor": "#1f77b4",
+        "singleColorEnabled": true,
+        "subtitlePosition": "left",
+        "viewType": "number"
+      },
+      "showHeader": true,
+      "thresholds": [
+        {
+          "color": "#1f77b4",
+          "formula": {
+            "text": "1500"
+          },
+          "value": 1500
+        }
+      ],
+      "title": "Value of Missed Discounts",
+      "titleStyle": {
+        "alignment": "center",
+        "backgroundColor": "#14A9D5",
+        "borderColor": "",
+        "currentFontSize": {
+          "name": "x-large 17px",
+          "value": 17
+        },
+        "fontColor": "#ffffff",
+        "fontSize": 17
+      },
+      "toolBorder": false,
+      "type": "single-kpi",
+      "version": 1,
+      "vertical": false,
+      "viewType": "number",
+      "width": 13,
+      "x": 87,
+      "y": 0,
+      "zIndex": 2
+    },
+    {
+      "allowDataLink": false,
+      "backgroundColor": "#ffffff",
+      "border": false,
+      "clickToFilter": true,
+      "componentFilter": "",
+      "contextMenuMethods": {
+        "componentFilter": true,
+        "copy": true,
+        "deletable": true,
+        "export": true,
+        "fullscreen": true,
+        "layers": true,
+        "settings": true
+      },
+      "diagramBackground": false,
+      "diagramBackgroundStyle": {
+        "fillColor": "",
+        "opacity": 1
+      },
+      "diagramBorder": true,
+      "diagramBorderStyle": {
+        "lineColor": "#e9e9e9",
+        "lineOpacity": 1,
+        "lineWidth": 1
+      },
+      "documentId": "0af32d07-abb2-4392-93d6-0a2f544c6f37",
+      "feedbackMode": false,
+      "filteringSelf": true,
+      "hasBackground": true,
+      "hasHoverbuttons": false,
+      "height": 9,
+      "id": "56d6a495-c688-48f4-8293-863181ced6d0",
+      "imageId": "40d90a44-b70d-4813-a2cb-70dc5bc39ab5",
+      "imageOptions": {
+        "imagePosition": "tl",
+        "selectedColor": ""
+      },
+      "imageUrl": null,
+      "maximized": false,
+      "selection": [],
+      "showHeader": true,
+      "title": "",
+      "titleStyle": {
+        "currentFontSize": {
+          "name": "x-large 17px",
+          "value": 17
+        },
+        "fontSize": 17
+      },
+      "toolBorder": false,
+      "type": "image",
+      "vertical": false,
+      "width": 7,
+      "x": 30,
+      "y": 1,
+      "zIndex": 2
+    }
+  ],
+  "contentType": "blank-sheet",
+  "format": "FULLSCREEN",
+  "id": "3f240947-a1a9-4d63-9af7-7879895f29a8",
+  "name": "Cash Discount Analysis",
+  "position": {
+    "height": 804,
+    "left": 0,
+    "top": 0,
+    "width": 1200
+  },
+  "sheetFilter": {
+    "text": "FILTER \"_CEL_AP_ACTIVITIES\".\"ACTIVITY_EN\" = 'Set Payment Block'"
+  }
+}
