@@ -1,0 +1,62 @@
+{
+  "document": {
+    "KPILibrary": [],
+    "colorMappings": [
+      {
+        "id": "94a3c4d8-4b2f-4eb1-9539-f37999daad7f",
+        "name": "New Color Mapping",
+        "thresholds": [
+          {
+            "color": "#ffffff",
+            "compare": "<",
+            "formula": "0"
+          },
+          {
+            "color": "#1b1b1b",
+            "compare": ">",
+            "formula": "0"
+          }
+        ],
+        "type": "series"
+      },
+      {
+        "id": "d7931b8f-f809-4e96-9f54-afaa756f0866",
+        "name": "New Color Mapping",
+        "thresholds": [
+          {
+            "color": "#911027",
+            "compare": "<",
+            "formula": "0"
+          },
+          {
+            "color": "#FFB710",
+            "compare": ">",
+            "formula": "0"
+          },
+          {
+            "color": "#c8ec84",
+            "compare": ">",
+            "formula": "5"
+          }
+        ],
+        "type": "series"
+      }
+    ],
+    "editMode": false,
+    "id": "0af32d07-abb2-4392-93d6-0a2f544c6f37",
+    "kpiViews": [],
+    "name": "Action Engine WIP",
+    "rawDataExportLimit": 20000,
+    "showFiltersForViewers": false,
+    "statelessLoadScript": "",
+    "theme": "celonis_legacy",
+    "translationMap": {}
+  },
+  "id": "b9e1625d-0c1a-478a-8f75-81be597a8f9e",
+  "lastChangeDate": 1615356607384,
+  "lastChangeUserId": "3aa20b79-a96d-4368-acd0-bf0de3f3ed04",
+  "lastChangeUserName": "aditi.tandon@capgemini.com(Aditi)",
+  "lockedUntilDate": 1614066593175,
+  "sourceId": "1e270d1e-6063-4a4c-a998-71faa50311d8",
+  "title": null
+}
