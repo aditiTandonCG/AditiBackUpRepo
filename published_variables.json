@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Today",
+    "type": "static_value",
+    "value": "TO_DATE ( '2009-04-20' , FORMAT ( '%Y-%m-%d') )"
+  },
+  {
+    "name": "CD2",
+    "type": "text_replacement",
+    "value": "30"
+  },
+  {
+    "name": "CD1",
+    "type": "text_replacement",
+    "value": "14"
+  }
+]
