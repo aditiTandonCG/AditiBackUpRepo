@@ -1,0 +1,26 @@
+[
+  {
+    "description": "",
+    "id": "dec9cd35-9999-45a3-8ec6-77be8f2ac507",
+    "name": "Today_form",
+    "parameterCount": 0,
+    "parameters": [],
+    "template": "TO_DATE ( '2009-04-10' , FORMAT ( '%Y-%m-%d') )"
+  },
+  {
+    "description": "",
+    "id": "a10df4e4-35b1-49b6-a173-fe918d898bfe",
+    "name": "CD1",
+    "parameterCount": 0,
+    "parameters": [],
+    "template": "ADD_DAYS (ROUND_DAY(\"BSEG\".\"ZFBDT\"), <%=CD1%> )"
+  },
+  {
+    "description": "",
+    "id": "bfb510c6-5a21-447e-b8f8-144e17a56d4b",
+    "name": "Date Diff Formula",
+    "parameterCount": 0,
+    "parameters": [],
+    "template": "DAYS_BETWEEN (  KPI(\"Today_form\"),KPI(\"CD1\") )"
+  }
+]
